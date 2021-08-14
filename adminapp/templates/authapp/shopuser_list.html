@@ -1,0 +1,18 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="basket_list">
+    <div class="div_h1_basket1">пользователи</div>
+{% if object_list %}
+    {% include 'adminapp/includes/inc__admin_center.html' %}
+{% else %}
+пока пусто!
+{% endif %}
+</div>
+<div class="adiv">
+    <a href="{% url 'mainapp:index' %}" class="alogin">
+        на главную
+    </a>
+</div>
+{% endblock %}

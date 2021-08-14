@@ -1,0 +1,16 @@
+<div class="menucatalog clearfix">
+    <ul class="ulmenucat">
+            <li class="limenucat">
+                <a href="{% url 'main:products' pk=0 %}" class="amenucat {% if request.resolver_match.kwargs.pk == '0' %} menuactive {% endif %}">
+                    все
+                </a>
+            </li>
+        {% for category in categories %}
+            <li class="limenucat">
+                <a href="{% url 'main:products' pk=category.pk %}" class="amenucat {% if request.resolver_match.kwargs.pk|add:0 == category.pk %} menuactive {% endif %}">
+                    {{ category.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {{ title_page|default:"главная"|title }}
+    </title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/log1.css' %}">
+    {% endblock %}
+</head>
+
+<body>
+    <div class="conter">
+        <div class="login">
+            <div class="logod"><a href="{% url 'main:index' %}"><img class="logo" src="{% static 'img/logo.png' %}" alt="logo"></a></div>
+            {% block content %}
+
+            {% endblock %}
+            <div class="adiv">
+                <a href="{% url 'mainapp:index' %}"
+                   class="alogin">
+                    на главную
+                </a>
+            </div>
+        </div>
+
+        <div class="cln"></div>
+
+    </div>
+</body>
+
+</html>

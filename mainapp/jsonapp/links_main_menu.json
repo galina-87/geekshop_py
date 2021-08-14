@@ -1,0 +1,5 @@
+[
+        {"href":"main:index", "name":"Главная", "url_name":"index"},
+        {"href":"main:catalog", "name":"Каталог", "url_name":"catalog"},
+        {"href":"main:contact", "name":"Контакты", "url_name":"contact"}
+]

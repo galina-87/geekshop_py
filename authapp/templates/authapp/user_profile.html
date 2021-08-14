@@ -1,0 +1,15 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+{% block content%}
+<div class="h2center">
+    Профиль
+</div>
+<div class="user_photo1 clearfix">
+    <img src="/media/{{ user.photo }}" class="imguser">
+</div>
+<form class="formprofil" action="{% url 'auth:user_profile' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="logbut">Сохранить</button>
+</form>
+{% endblock %}

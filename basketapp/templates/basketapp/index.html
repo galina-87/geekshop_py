@@ -1,0 +1,17 @@
+{% extends 'basketapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="basket_list">
+{% if basket_positions %}
+    {% include 'basketapp/includes/inc__basket_items.html' %}
+{% else %}
+Ваша корзина пока пуста!
+{% endif %}
+</div>
+<div class="adiv">
+    <a href="{% url 'mainapp:index' %}" class="alogin">
+        на главную
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+{% include 'mainapp/includes/inc__catalog_menu.html' %}
+<div class="prodact clearfix">
+    <h2>продукты в категории {{ category.name|capfirst }}</h2>
+    <div class="paginator">
+        {% if prods.has_previous %}
+            <a href="{% url 'main:products_page' pk=category.pk page=prods.previous_page_number %}">
+                <
+            </a>
+        {% endif %}
+        <span class="current">страница {{ prods.number }} из {{ prods.paginator.num_pages }}</span>
+        {% if prods.has_next %}
+            <a href="{% url 'main:products_page' pk=category.pk page=prods.next_page_number %}">
+                >
+            </a>
+        {% endif %}
+    </div>
+    {% for product in prods %}
+        <div class="prod">
+            <a href="{% url 'main:page_product' pk=product.pk %}"><img src="/media/{{ product.image }}" class="imgprod" alt="Фото"></a>
+            <p class="pr">{{ product.name }}</p>
+            <p class="pr">{{ product.short_descr }}</p>
+            <p class="pr">Цена, в руб:</p>
+            <p class="pr prise">{{ product.price }}</p>
+            <div class="basket"><a href="{% url 'basket:add' pk=product.pk %}" class="basketa linkli">Купить</a></div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

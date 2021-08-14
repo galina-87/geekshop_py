@@ -1,0 +1,55 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="basket_list">
+
+{% if object_list %}
+<div class="div_h1_basket1">продукты в категории {{ category.name }}</div>
+<div class="b_list">
+    <div class="butadmin">
+            <a href="{% url 'adminapp:product_create' category_pk=category.pk %}" class="dela linkli">
+                создать
+            </a>
+        </div>
+    <div class="basket_record">
+        <span class="categoryprod">Название</span>
+        <span class="categoryprod">Описание</span>
+        <span class="categoryprod">Активность</span>
+    </div>
+    <hr>
+    {% for position in object_list %}
+    <div class="basket_record {% if not position.is_active %} notaction {% endif %}">
+        <span class="categoryprod">{{ position.name }}</span>
+        <span class="categoryprod">{{ position.description }}</span>
+        <span class="categoryprod">{{ position.is_active }}</span>
+        <div class="butadmin">
+            {% if position.is_active %}
+            <a href="{% url 'adminapp:product_delete' pk=position.pk %}" class="dela linkli">
+                удалить
+            </a>
+            {% else %}
+            <a href="{% url 'adminapp:product_recover' pk=position.pk %}" class="dela linkli">
+                восстановить
+            </a>
+            {% endif %}
+        </div>
+        <div class="butadmin">
+            <a href="{% url 'adminapp:product_update' pk=position.pk %}" class="dela linkli">
+                редактировать
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+пока пусто!
+{% endif %}
+</div>
+<div class="adiv">
+    <a href="{% url 'adminapp:categories' %}"
+       class="alogin">
+        вернуться
+    </a>
+</div>
+{% endblock %}

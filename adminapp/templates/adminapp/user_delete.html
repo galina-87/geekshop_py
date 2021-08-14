@@ -1,0 +1,22 @@
+{% extends 'adminapp/base.html' %}
+{% block menu %}
+
+{% endblock %}
+{% block content%}
+<div class="winsave">
+<div class="h2centeradmin clearfix">
+    заблокировать пользователя {{ user_to_delete.username }}?
+</div>
+<form class="formlogin" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Удалить" class="inpdel formmarg">
+</form>
+<ul class="inpdel">
+   <li class="ullimenuadm">
+        <a href="{% url 'adminapp:index' %}" class="linkliadm">
+            отмена
+        </a>
+   </li>
+</ul>
+</div>
+{% endblock %}

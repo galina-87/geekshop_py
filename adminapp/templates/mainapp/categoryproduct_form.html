@@ -1,0 +1,20 @@
+{% extends 'adminapp/base.html' %}
+{% block menu %}
+
+{% endblock %}
+{% block content%}
+<div class="h2centeradmin clearfix">
+    Категория:
+</div>
+<form class="formcateg" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="regbut1">сохранить</button>
+</form>
+<div class="adiv">
+    <a href="{% url 'adminapp:categories' %}"
+       class="alogin">
+        вернуться
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="cont">
+  {% if locations %}
+   {% for location in locations %}
+    <div class="contact">
+        <p class="con">г. {{ location.city }}</p>
+        <p class="con">{{ location.position }}</p>
+        <p class="con">тел.: {{ location.phone }}</p>
+        <p class="con"><img src="{% static 'img/logo.png' %}" alt="Магазин" class="contimg"></p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h3>Данные скоро будут загружены</h3>
+    {% endif %}
+    
+</div>
+{% endblock %}

@@ -1,0 +1,83 @@
+[
+    {
+        "category": "цепочки",
+        "name": "цепочка",
+        "image": "prodacts_photo/decor5.jpg",
+        "short_descr": "серебрянная цепочка",
+        "description": "серебрянная цепочка",
+        "price": "6500",
+        "quantity": "2"
+    },
+	{
+        "category": "цепочки",
+        "name": "цепочка",
+        "image": "prodacts_photo/decor1.jpg",
+        "short_descr": "серебрянная цепочка",
+        "description": "серебрянная цепочка",
+        "price": "6000",
+        "quantity": "3"
+    },
+	{
+        "category": "браслеты",
+        "name": "браслет",
+        "image": "prodacts_photo/decor3.jpg",
+        "short_descr": "браслет серебро",
+        "description": "браслет серебро",
+        "price": "7000",
+        "quantity": "5"
+    },
+	{
+        "category": "монеты",
+        "name": "монета",
+        "image": "prodacts_photo/decor4.jpg",
+        "short_descr": "монета алюминевая",
+        "description": "монета алюминевая",
+        "price": "300",
+        "quantity": "150"
+    },
+	{
+        "category": "цепочки",
+        "name": "цепочка",
+        "image": "prodacts_photo/decor2.jpg",
+        "short_descr": "серебрянная цепочка",
+        "description": "цепочка с концевиками-головами первого типа",
+        "price": "7500",
+        "quantity": "8"
+    },
+	{
+        "category": "сумки",
+        "name": "сумка",
+        "image": "prodacts_photo/decor6.jpg",
+        "short_descr": "сумка синяя",
+        "description": "сумка синяя лен",
+        "price": "5300",
+        "quantity": "6"
+    },
+	{
+        "category": "расходники",
+        "name": "куклы",
+        "image": "prodacts_photo/decor7.jpg",
+        "short_descr": "куклы, материал лен, шерсть",
+        "description": "тряпичные куклы, материал лен, шерсть",
+        "price": "400",
+        "quantity": "45"
+    },
+	{
+        "category": "расходники",
+        "name": "Проволока",
+        "image": "prodacts_photo/decor8.jpg",
+        "short_descr": "проволока серебро",
+        "description": "проволока серебро",
+        "price": "70",
+        "quantity": "100"
+    },
+	{
+        "category": "цепочки",
+        "name": "цепочка",
+        "image": "prodacts_photo/logo.png",
+        "short_descr": "цепочка серебро",
+        "description": "цепочка с концевиками-головами первого типа",
+        "price": "4500",
+        "quantity": "10"
+    }
+]

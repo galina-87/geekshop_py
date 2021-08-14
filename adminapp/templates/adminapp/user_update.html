@@ -1,0 +1,20 @@
+{% extends 'adminapp/base.html' %}
+{% block menu %}
+
+{% endblock %}
+{% block content%}
+<div class="h2centeradmin clearfix">
+    пользователь:
+</div>
+<form class="formlogin" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    <button class="regbut">сохранить</button>
+</form>
+<div class="adiv">
+    <a href="{% url 'adminapp:index' %}"
+       class="alogin">
+        вернуться
+    </a>
+</div>
+{% endblock %}

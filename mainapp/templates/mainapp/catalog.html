@@ -1,0 +1,37 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'mainapp/includes/inc__catalog_menu.html' %}
+<div class="prodact clearfix">
+    <h1>Успей купить</h1>
+    <div class="prod">
+        <a href="{% url 'main:page_product' pk=hot_product.pk %}"><img src="/media/{{ hot_product.image }}" class="imgprod" alt="Фото"></a>
+        <p class="pr">{{ hot_product.name }}</p>
+        <p class="pr">{{ hot_product.short_descr }}</p>
+        <p class="pr">Цена, в руб:</p>
+        <p class="pr prise">{{ hot_product.price }}</p>
+        <div class="basket"><a href="{% url 'basket:add' pk=hot_product.pk %}" class="basketa linkli">Купить</a></div>
+    </div>
+</div>
+<div class="prodact clearfix">
+    <h1>похожие товары</h1>
+    {% for product in related_products %}
+    {% include 'mainapp/includes/inc__product_in_list.html' %}
+    {% endfor %}
+</div>
+<div class="prodact clearfix">
+    <h1>каталог</h1>
+    {% for product in products %}
+    <div class="prod">
+        <a href="{% url 'main:page_product' pk=product.pk %}"><img src="/media/{{ product.image }}" class="imgprod" alt="Фото"></a>
+        <p class="pr">{{ product.name }}</p>
+        <p class="pr">{{ product.short_descr }}</p>
+        <p class="pr">Цена, в руб:</p>
+        <p class="pr prise">{{ product.price }}</p>
+        <div class="basket"><a href="{% url 'basket:add' pk=product.pk %}" class="basketa linkli">Купить</a></div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
