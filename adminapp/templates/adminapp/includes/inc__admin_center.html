@@ -1,0 +1,40 @@
+{% load static %}
+
+<div class="b_list">
+    <div class="butadmin">
+            <a href="{% url 'adminapp:user_create' %}" class="dela linkli">
+                создать
+            </a>
+        </div>
+    <div class="basket_record">
+        <span class="img_bask">фото</span>
+        <span class="categoryprod">Логин</span>
+        <span class="prodprice">Возраст</span>
+        <span class="prodprice">Активность</span>
+    </div>
+    <hr>
+    {% for position in object_list %}
+    <div class="basket_record {% if not position.is_active %} notaction {% endif %}">
+        <img class="img_bask" src="/media/{{ position.photo }}" alt="{{ position.id }}">
+        <span class="categoryprod">{{ position.username }}</span>
+        <span class="prodprice">{{ position.age }}</span>
+        <span class="prodprice">{{ position.is_active }}</span>
+        <div class="butadmin">
+            {% if position.is_active %}
+            <a href="{% url 'adminapp:user_delete' pk=position.pk %}" class="dela linkli">
+                удалить
+            </a>
+            {% else %}
+            <a href="{% url 'adminapp:user_recover' pk=position.pk %}" class="dela linkli">
+                восстановить
+            </a>
+            {% endif %}
+        </div>
+        <div class="butadmin">
+            <a href="{% url 'adminapp:user_update' pk=position.pk %}" class="dela linkli">
+                редактировать
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>

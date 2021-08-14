@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {{ title_page|default:"главная"|title }}
+    </title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+</head>
+
+<body>
+    <div class="conter">
+        <div class="slider clearfix" id="img1">
+            <div class="clearfix">
+                <div class="logod"><a href="{% url 'main:index' %}"><img class="logo" src="{% static 'img/logo.png' %}" alt="logo"></a></div>
+                <div class="menu">
+                    <ul class="ulmenu">
+                       {% for link in links_main_menu %}
+                        <li class="ullimenu">
+                            <a href="{% url link.href %}" class="linkli {% if request.resolver_match.url_name == link.url_name or request.resolver_match.url_name == 'products' and link.url_name == 'catalog' %} menuactive {% endif %}">
+                                {{ link.name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                        {% if user.is_authenticated %}
+                        <li class="ullimenu">
+                            <a href="{% url 'auth:user_profile' %}" class="linkli">
+                                {{ user.first_name|default:'Пользователь' }}
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    <ul class="ulmenu">
+                       <li class="ullimenu">
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'auth:logout' %}" class="linkli">
+                                    выйти
+                                </a>
+                            {% else %}
+                                <a href="{% url 'auth:login' %}" class="linkli">
+                                    войти
+                                </a>
+                            {% endif %}
+                       </li>
+                    </ul>
+                    {% if user.is_authenticated %}
+                    <div class="basket">
+                        <a href="{% url 'basket:index' %}" class="basketa linkli">
+                            Корзина
+                            <img src="{% static 'img/basket.png' %}" class="basketimg" alt="Корзина">
+                            {{ user.col_prod }}шт({{ user.cost_prod|floatformat:0 }}руб)
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if user.is_superuser %}
+                    <ul class="ulmenuadmin">
+                    <li class="ullimenu">
+                            <a href="{% url 'adminapp:index' %}" class="linkli">
+                                админка
+                            </a>
+                    </li>
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <button class="left">&lt;</button>
+            <button class="right">&gt;</button>
+        </div>
+        {% block content %}
+
+        {% endblock %}
+        <div class="cln"></div>
+    </div>
+    {% block footer %}
+    <div class="footer">
+        <div class="foot">
+            <p class="fp"><b>Наши контакты:</b></p>
+            <p class="fp">тел: 8(999) 564 54 12</p>
+            <p class="fp">Адрес: г.Москва, ул. Арбат, 54/с2</p>
+        </div>
+        <div class="foot">
+            <p class="fp"><b>Полезное:</b></p>
+            <p class="fp"><a href="#" class="foota">Сотрудничать</a></p>
+            <p class="fp"><a href="#" class="foota">Написать нам</a></p>
+        </div>
+        <div class="date">Сегодня: <b>{% now "d.m.Y" %}</b></div>
+    </div>
+    {% endblock %}
+    <script src="{% static 'js/scr.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="prodact_page clearfix">
+    <div class="prod_page">
+        <img src="/media/{{ product.image }}" class="imgprod_page" alt="Фото">
+        <div class="pr_page_text">
+            <p class="pr_page_name">{{ product.name }}</p>
+            <p class="pr_page">{{ product.description }}</p>
+            <p class="pr_page prise">{{ product.price }} руб.</p>
+            <div class="basket_page"><a href="{% url 'basket:add' pk=product.pk %}" class="basketa_page linkli">Купить</a></div>
+        </div>
+    </div>
+</div>
+<div class="prodact clearfix">
+    <p>похожие товары</p>
+    {% for product in related_products %}
+    {% include 'mainapp/includes/inc__product_in_list.html' %}
+    {% endfor %}
+</div>
+
+{% endblock %}

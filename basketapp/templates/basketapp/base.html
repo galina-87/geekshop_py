@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {{ title_page|default:"главная"|title }}
+    </title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/log1.css' %}">
+    {% endblock %}
+    {% block js %}
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/basket_script.js' %}"></script>
+    {% endblock %}
+</head>
+
+<body>
+    <div class="conter">
+        <div class="div_h1_basket"><h1>ваша корзина, {{ user.first_name|default:'пользоветель'|title }}</h1></div>
+
+        {% block content %}
+
+        {% endblock %}
+        <div class="cln"></div>
+    </div>
+    {% block footer %}
+    <div class="footer">
+        <div class="foot">
+            <p class="fp"><b>Наши контакты:</b></p>
+            <p class="fp">тел: 8(999) 564 54 12</p>
+            <p class="fp">Адрес: г.Москва, ул. Арбат, 54/с2</p>
+        </div>
+        <div class="foot">
+            <p class="fp"><b>Полезное:</b></p>
+            <p class="fp"><a href="#" class="foota">Сотрудничать</a></p>
+            <p class="fp"><a href="#" class="foota">Написать нам</a></p>
+        </div>
+        <div class="date">Сегодня: <b>{% now "d.m.Y" %}</b></div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+{% load static %}
+{% load mytegs %}
+
+<div class="b_list">
+    <div class="basket_record">
+        <span class="img_bask">Фото</span>
+        <span class="categoryprod">Категория</span>
+        <span class="prodname">Продукт</span>
+        <span class="prodprice">цена</span>
+        <span class="colprod">количество</span>
+    </div>
+    <hr>
+    {% for position in basket_positions %}
+    <div class="basket_record">
+        <img class="img_bask" src="/media/{{ position.product.image }}" alt="{{ position.product.short_descr }}">
+        <span class="categoryprod">{{ position.product.category.name }}</span>
+        <span class="prodname">{{ position.product.name }}</span>
+        <span class="prodprice">{{ position.product.price }}</span>
+        <input type="number" name="{{ position.pk }}" min="0" max="position.product.quantity" value="{{ position.quantity }}" class="colprod">
+        <div class="basket">
+            <a href="{% url 'basket:delete' position.pk %}" class="dela linkli">
+                удалить
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="total">
+        <p>
+            Количество товаров в корзине: {{ user.col_prod }} шт.
+        </p>
+        <p>
+            На сумму: {{ user.cost_prod }} руб. <br>
+            сумма со скидкой: {{ user.cost_prod|sale5 }} руб.
+        </p>
+    </div>
+</div>
